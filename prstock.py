@@ -6,7 +6,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split # División de datos
 from sklearn.linear_model import LogisticRegression # Modelo de Regresión Logística
 from sklearn.metrics import accuracy_score # Métrica de Precisión
-import ta  # Librería de Análisis Técnico
+import ta # Librería de Análisis Técnico
 
 # ============================================================
 # 1. CONFIGURACIÓN INICIAL
