@@ -178,3 +178,28 @@ plt.tight_layout(rect=[0, 0, 0.80, 1])
 plt.show()
 
 print("\n✅ Script ejecutado correctamente con Dashboard y Predicción.")
+
+# ============================================================
+# 8. EXPORTACIÓN A EXCEL (.xlsx)
+# ============================================================
+nombre_archivo = f"analisis_{SYMBOL}.xlsx"
+
+with pd.ExcelWriter(nombre_archivo, engine='openpyxl') as writer:
+    df.to_excel(writer, sheet_name='Datos e Indicadores')
+    
+    resumen = pd.DataFrame({
+        'Métrica': ['Volatilidad Anualizada', 'Rendimiento Anualizado', 'Sharpe', 'Calmar', 'MDD', 'Precisión', 'Predicción'],
+        'Valor': [
+            f"{volatilidad_anualizada:.2%}",
+            f"{rendimiento_anualizado:.2%}",
+            f"{ratio_sharpe:.4f}",
+            f"{ratio_calmar:.4f}",
+            f"{mdd:.2%}",
+            f"{precision:.2%}",
+            prediccion_texto
+        ]
+    })
+    resumen.to_excel(writer, sheet_name='Resumen', index=False)
+
+print(f"\n💾 Archivo Excel exportado correctamente: {nombre_archivo}")
+print("✅ Script ejecutado correctamente con Dashboard, ML y exportación.")
